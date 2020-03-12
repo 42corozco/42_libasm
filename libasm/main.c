@@ -21,10 +21,9 @@ int		main(void)
 	*/
 	printf("\n\x1b[33m\t\t[ft_strcpy]\n\x1b[0m");
 	char s1[30] = "Hola que tal";
-	char s2[30] = "HOLA QUE TAL";
 	char ss1[30] = "";
 	char ss2[30] = "";
-	printf("\tM = \x1b[32m[%s]\x1b[0m || O = \x1b[32m[%s]\x1b[0m\n", ft_strcpy(ss2, s2), strcpy(ss1, s1));
+	printf("\tM = \x1b[32m[%s]\x1b[0m || O = \x1b[32m[%s]\x1b[0m\n", ft_strcpy(ss2, s1), strcpy(ss1, s1));
 	printf("\tM = \x1b[32m[%s]\x1b[0m || O = \x1b[32m[%s]\x1b[0m\n", ft_strcpy(ss2, ""), strcpy(ss1, ""));
 	printf("\tM = \x1b[32m[%s]\x1b[0m || O = \x1b[32m[%s]\x1b[0m\n", ft_strcpy(ss2, "!@#"), strcpy(ss1, "!@#"));
 
