@@ -31,5 +31,18 @@ int		main(void)
 	**	ft_strcpy
 	*/
 	printf("\n\x1b[33m\t\t[ft_strcmp]\n\x1b[0m");
+	const char *cmp1_1 = "camilo1";
+	const char *cmp1_2 = "camilo9";
+	printf("\tM = \x1b[32m[%d]\x1b[0m || O = \x1b[32m[%d]\x1b[0m\n", ft_strcmp(cmp1_1, cmp1_2), strcmp(cmp1_1, cmp1_2));
+	const char *cmp2_1 = "camilo9";
+	const char *cmp2_2 = "camilo1";
+	printf("\tM = \x1b[32m[%d]\x1b[0m || O = \x1b[32m[%d]\x1b[0m\n", ft_strcmp(cmp2_1, cmp2_2), strcmp(cmp2_1, cmp2_2));
+	const char *cmp3_1 = "";
+	const char *cmp3_2 = "";
+	printf("\tM = \x1b[32m[%d]\x1b[0m || O = \x1b[32m[%d]\x1b[0m\n", ft_strcmp(cmp3_1, cmp3_2), strcmp(cmp3_1, cmp3_2));
+	const char *cmp4_1 = "";
+	const char *cmp4_2 = "camilo9";
+	printf("\tM = \x1b[32m[%d]\x1b[0m || O = \x1b[32m[%d]\x1b[0m\n", ft_strcmp(cmp4_1, cmp4_2), strcmp(cmp4_1, cmp4_2));
+
 	return (0);
 }
