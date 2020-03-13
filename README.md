@@ -3,12 +3,13 @@
 
 ```sh
 $ Status =
-	#unfinished
+	#finished
 $ Note =
-	#??
+	#105
 $ Development =
-	#make
-	#make test
+	#make bonus
+	#make testbonus
+	
 ```
 
 ## Doc =
