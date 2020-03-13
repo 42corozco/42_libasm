@@ -6,7 +6,7 @@
 #    By: corozco <corozco@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/12 23:00:01 by corozco           #+#    #+#              #
-#    Updated: 2020/03/13 02:26:58 by corozco          ###   ########.fr        #
+#    Updated: 2020/03/13 03:09:59 by corozco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ _ft_strcmp:
 	mov rcx, 0x0
 	while:
 		mov bl, BYTE[rdi + rcx]
-		cmp bl, BYTE[rsi + rcx]
+		cmp bl, BYTE[rsi + rcx]		;if (a == b) {je/jz}
 			je istrue
 		jmp fin
 
