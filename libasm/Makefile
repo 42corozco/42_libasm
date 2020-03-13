@@ -6,7 +6,7 @@
 #    By: corozco <corozco@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 05:41:03 by corozco           #+#    #+#              #
-#    Updated: 2020/03/12 23:33:32 by corozco          ###   ########.fr        #
+#    Updated: 2020/03/13 02:30:25 by corozco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS = -Wall -Wextra -Werror
 SRC := \
 	srcs/ft_strlen.s \
 	srcs/ft_strcpy.s \
-	srcs/ft_strcmp.s
+	srcs/ft_strcmp.s \
+	srcs/ft_write.s
 
 OBJS = $(addprefix objs/, $(SRC:.s=.o))
 

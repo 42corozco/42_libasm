@@ -1,32 +1,31 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_strcpy.s                                        :+:      :+:    :+:    #
+#    ft_write.s                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: corozco <corozco@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/12 08:22:03 by corozco           #+#    #+#              #
-#    Updated: 2020/03/13 01:02:07 by corozco          ###   ########.fr        #
+#    Created: 2020/03/13 00:38:26 by corozco           #+#    #+#              #
+#    Updated: 2020/03/13 03:00:32 by corozco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section.text:
-	global _ft_strcpy
+	global _ft_write
 
-_ft_strcpy:
-	mov rcx, 0x0
-	while:
-		cmp BYTE[rsi + rcx], 0x0
-			jg cont
-		jmp fin
-		
-cont:
-	mov al, BYTE[rsi + rcx]
-	mov BYTE[rdi + rcx], al
-	inc rcx
-	jmp while
-
-fin:
-	mov BYTE[rdi + rcx], 0
+_ft_write:
+	cmp rsi, 0x0
+		jz exit
+	mov rax, 0x0
 	mov rax, rdi
+	cmp rax, 0
+		jb exit
+	cmp rax, 2
+		ja exit
+	mov rax, 0x2000004
+	syscall
+	ret
+
+exit:
+	mov rax, -1
 	ret
