@@ -3,7 +3,7 @@
 
 ```sh
 $ Status =
-	#??
+	#unfinished
 $ Note =
 	#??
 $ Development =
