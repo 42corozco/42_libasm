@@ -6,7 +6,7 @@
 #    By: corozco <corozco@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 05:41:03 by corozco           #+#    #+#              #
-#    Updated: 2020/03/13 07:52:42 by corozco          ###   ########.fr        #
+#    Updated: 2020/03/13 08:07:44 by corozco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,10 @@ test:
 	@./a.out
 	@rm a.out
 
+testbonus:
+	@gcc main_bonus.c $(HEAD) $(NAME)
+	@./a.out
+	@rm a.out
 
 quimera:
 	@echo '	 _**_**	'

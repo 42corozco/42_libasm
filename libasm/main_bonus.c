@@ -5,6 +5,19 @@
 #include <string.h>
 #include <fcntl.h>
 
+t_list	*new(void *data)
+{
+	t_list *n;
+
+	n = (t_list *)malloc(sizeof(t_list));
+	if (n)
+	{
+		n->data = data;
+		n->next = NULL;
+	}
+	return (n);
+}
+
 int		main(void)
 {
 	system("clear");
@@ -125,5 +138,21 @@ int		main(void)
 	printf("\tasm = \x1b[32m[%d] -> \n[%s]\x1b[0m\t\t\x1b[0m\n", retorno, buffer2);
 	buffer[0] = 0;
 	buffer2[0] = 0;
+
+
+  //test para la lista
+	printf("\n\x1b[33m\t\t[ft_list_size]\n\x1b[0m\n");
+	printf("\x1b[35m[1]-> One->Two->Threer->Four\x1b[0m\n");
+	t_list *p, *s, *j, *t;
+
+	p = new("One");
+	s = new("Two");
+	j = new("Three");
+	t = new("Four");
+	p->next = s;
+	s->next = j;
+	j->next = t;
+	printf("\tasm = \x1b[32m[%d]\x1b[0m\n", ft_list_size(p));
+
 		return (0);
 }
