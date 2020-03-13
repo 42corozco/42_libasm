@@ -6,7 +6,7 @@
 #    By: corozco <corozco@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 05:41:03 by corozco           #+#    #+#              #
-#    Updated: 2020/03/13 06:22:35 by corozco          ###   ########.fr        #
+#    Updated: 2020/03/13 07:52:42 by corozco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ SRC := \
 	srcs/ft_read.s \
 	srcs/ft_write.s 
 
+BONUS := \
+	srcs/ft_list_size_bonus.s
+
 OBJS = $(addprefix objs/, $(SRC:.s=.o))
+OBJB = $(addprefix objs/, $(BONUS:.s=.o))
 
 #color
 COM_COLOR   = \033[0;34m
@@ -66,6 +70,9 @@ $(NAME): $(OBJS)
 	@echo '	..../""""""""""""\======░ ▒▓▓█D' "$(WARN_COLOR)\t $(NAME)\t$(OK_COLOR)[CREATED]$(NO_COLOR)";
 	@echo '	/"""""""""""""""""""\ '
 	@echo '	\_@_@_@_@_@_@_@_@_@_/'
+
+bonus: $(OBJS) $(OBJB)
+	@ar rcs $(NAME) $(OBJS) $(OBJB)
 
 objs/%.o: %.s
 	@mkdir -p $(dir $@)
