@@ -1,29 +1,20 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_write.s                                         :+:      :+:    :+:    #
+#    ft_read.s                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: corozco <corozco@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/13 00:38:26 by corozco           #+#    #+#              #
-#    Updated: 2020/03/13 07:12:26 by corozco          ###   ########.fr        #
+#    Created: 2020/03/13 06:03:06 by corozco           #+#    #+#              #
+#    Updated: 2020/03/13 07:10:38 by corozco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section.text:
-	global _ft_write
+	global _ft_read
 
-						;ft_write(a, b, c);
-_ft_write:
-	cmp rsi, 0x0		;if (b == NULL) {je/jz}
-		jz err
-	mov rax, 0x0
-	mov rax, rdi
-	cmp rax, 0			;if (a < 0) {jb/jnae}
-		jb err
-	cmp rax, 2			;if (a > 2) {ja/jnbe}
-		ja err
-	mov rax, 0x2000004	;write
+_ft_read:
+	mov rax, 0x2000003
 	syscall
 		jc err
 	ret

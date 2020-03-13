@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
 
 int		main(void)
 {
@@ -60,11 +61,69 @@ int		main(void)
 		printf("\x1b[35mwrite(2, \"\\ta\", 2);\x1b[0m\n");
 	printf("<-\tasm rn = \x1b[32m[%d]\x1b[0m\n",  (int)ft_write(2, "\ta", 2));
 	printf("<-\tOri rn = \x1b[32m[%d]\x1b[0m\n",  (int)write(2, "\ta", 2));
-/*
-** este test no cuenta, ya que se supone que envias una unsigned int (?????)
 	printf("\x1b[35mwrite(1, \"\\ta\", -2);\x1b[0m\n");
 	printf("<-\tasm rn = \x1b[32m[%d]\x1b[0m\n",  (int)ft_write(1, "\ta", -2));
 	printf("<-\tOri rn = \x1b[32m[%d]\x1b[0m\n",  (int)write(1, "\ta", -2));
+/*
 */
+
+	/*
+	**	ft_strdup
+	*/
+	char *src = "hola como estas";
+	char *dest;
+	char *dest2;
+	printf("\n\x1b[33m\t\t[ft_strdup]\n\x1b[0m\n");
+
+//	======================================[	1]====================================================
+	printf("\x1b[35m[1]-> \"hola como estas\"\x1b[0m\n");
+	dest = ft_strdup(src);
+	dest2 = strdup(src);
+	printf("\tasm = \x1b[32m[%s]\x1b[0m  \x1b[0m|| ori = \x1b[32m[%s]\x1b[0m\t\t\x1b[0m\n",  dest, dest2);
+	free(dest);
+	free(dest2);
+//	======================================[	2]====================================================
+	printf("\x1b[35m[2]-> \"1234asd\"\x1b[0m\n");
+	dest = ft_strdup("1234asd");
+	dest2 = strdup("1234asd");
+	printf("\tasm = \x1b[32m[%s]\x1b[0m  \x1b[0m|| ori = \x1b[32m[%s]\x1b[0m\t\t\x1b[0m\n",  dest, dest2);
+	free(dest);
+	free(dest2);
+//	======================================[	3]====================================================
+	printf("\x1b[35m[3]-> \"\"\x1b[0m\n");
+	dest = ft_strdup("");
+	dest2 = strdup("");
+	printf("\tasm = \x1b[32m[%s]\x1b[0m  \x1b[0m|| ori = \x1b[32m[%s]\x1b[0m\t\t\x1b[0m\n",  dest, dest2);
+	free(dest);
+	free(dest2);
+
+	/*
+	**	ft_read
+	*/
+	printf("\n\x1b[33m\t\t[ft_read]\n\x1b[0m\n");
+	int			fd;
+	char		buffer[100];
+	char		buffer2[100];
+	int			retorno;
+
+	printf("\x1b[35m[1]-> \"open main.c\"\x1b[0m\n");
+	fd = open("main.c", O_RDONLY);
+	retorno = read(fd, buffer, 70);
+	printf("\tori = \x1b[32m[%d] -> \n[%s]\x1b[0m\t\t\x1b[0m\n", retorno, buffer);
+	close(fd);
+	fd = open("main.c", O_RDONLY);
+	retorno = ft_read(fd, buffer2, 70);
+	printf("\tasm = \x1b[32m[%d] -> \n[%s]\x1b[0m\t\t\x1b[0m\n", retorno, buffer2);
+	close(fd);
+	buffer[0] = 0;
+	buffer2[0] = 0;
+
+	printf("\x1b[35m[2]-> \"open 42\"\x1b[0m\n");
+	retorno = read(42, buffer, 70);
+	printf("\tori = \x1b[32m[%d] -> \n[%s]\x1b[0m\t\t\x1b[0m\n", retorno, buffer);
+	retorno = ft_read(42, buffer2, 70);
+	printf("\tasm = \x1b[32m[%d] -> \n[%s]\x1b[0m\t\t\x1b[0m\n", retorno, buffer2);
+	buffer[0] = 0;
+	buffer2[0] = 0;
 		return (0);
 }

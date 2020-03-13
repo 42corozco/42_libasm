@@ -1,31 +1,34 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_write.s                                         :+:      :+:    :+:    #
+#    ft_strdup.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: corozco <corozco@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/13 00:38:26 by corozco           #+#    #+#              #
-#    Updated: 2020/03/13 07:12:26 by corozco          ###   ########.fr        #
+#    Created: 2020/03/13 03:20:38 by corozco           #+#    #+#              #
+#    Updated: 2020/03/13 07:22:33 by corozco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section.text:
-	global _ft_write
+	global _ft_strdup
+	extern _ft_strlen
+	extern _ft_strcpy
+	extern _malloc
 
-						;ft_write(a, b, c);
-_ft_write:
-	cmp rsi, 0x0		;if (b == NULL) {je/jz}
-		jz err
-	mov rax, 0x0
-	mov rax, rdi
-	cmp rax, 0			;if (a < 0) {jb/jnae}
-		jb err
-	cmp rax, 2			;if (a > 2) {ja/jnbe}
-		ja err
-	mov rax, 0x2000004	;write
-	syscall
-		jc err
+_ft_strdup:
+	call _ft_strlen		;return (rax) size
+	add rax, 1			;size + 1
+	push rdi			;The value of the stack register is updated
+	call _malloc
+	pop rdi				;restoring
+	cmp rax, 0x0		;malloc failed
+		je err
+	push rsi
+	mov rsi, rdi		; set rep loop count
+	mov rdi, rax		; set malloc return adress as destination
+	call _ft_strcpy
+	pop rsi
 	ret
 
 err:
